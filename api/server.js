@@ -41,8 +41,9 @@ server.post('/jokes', (req, res) => {
         });
     })
     .catch(error => {
+        console.log(error);
         res.status(500).json({
-            errorMessage: error.message
+            message: 'error in post jokes'
         });
     });
 });

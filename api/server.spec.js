@@ -32,7 +32,7 @@ describe('server', function(){
         it('should return a 201 on success', function(){
             return request(server)
             .post('/jokes')
-            .send({ name: 'DadJoke4' })
+            .send({ name: 'DadJoke4', username: 'DadJokes4', password: 'dadjoke4' })
             .then(res => {
                 expect(res.status).toBe(201);
             });
@@ -41,13 +41,13 @@ describe('server', function(){
         it('should return a message saying `joke created successfully`', function(){
             return request(server)
             .post('/jokes')
-            .send({ name: 'DadJoke4' })
+            .send({ name: 'DadJoke4', username: 'DadJoke4', password: 'dadjoke4' })
             .then(res => {
                 expect(res.body.message).toBe('Joke created successfully');
             });
         });
 
-        it('should add the joke to the db', function(){
+        it('should add the joke to the db', async function(){
             const jokeName = 'DadJoke4';
 
             const existing = await db('jokes').where({ name: jokeName});
@@ -55,14 +55,14 @@ describe('server', function(){
 
             await request(server)
             .post('/jokes')
-            .send({ name: jokeName })
+            .send({ name: 'DadJoke4', username: 'DadJokes4', password: 'dadjokes4' })
             .then(res => {
                 expect(res.body.message).toBe('Joke created successfully');
             });
 
             await request(server)
             .post('/jokes')
-            .send({ name: 'DadJoke5' })
+            .send({ name: 'DadJoke5', username: 'DadJokes5', password: 'dadjokes5' })
             .then(res => {
                 expect(res.body.message).toBe('Joke created successfully');
             });
