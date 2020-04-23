@@ -5,6 +5,7 @@ module.exports = {
     update,
     remove,
     getAll,
+    find,
     findBy,
     findById,
 };
@@ -23,6 +24,10 @@ function remove(id){
 
 function getAll(){
     return db('jokes');
+}
+
+function find(){
+    return db('jokes').select('id', 'username');
 }
 
 function findBy(filter){

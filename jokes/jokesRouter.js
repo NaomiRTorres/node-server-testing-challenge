@@ -4,7 +4,7 @@ const Jokes = require('./jokeModel.js');
 
 router.get('/', (req, res) => {
     console.log('token', req.decodedToken);
-    Jokes.findById()
+    Jokes.find()
     .then(jokes => {
         res.json(jokes);
     })
