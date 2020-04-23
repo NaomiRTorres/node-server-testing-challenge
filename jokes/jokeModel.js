@@ -5,6 +5,7 @@ module.exports = {
     update,
     remove,
     getAll,
+    findBy,
     findById,
 };
 
@@ -24,6 +25,12 @@ function getAll(){
     return db('jokes');
 }
 
+function findBy(filter){
+    return db('jokes').where(filter);
+}
+
 function findById(id){
-    return null;
+    return db('jokes')
+    .where({ id })
+    .first();
 }
